@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>Todo App</h1>
+        <div class="">
+            <div class="col-12 input-container">
+                <input v-model="newTodo" @keyup.enter="addTodo" placeholder="Add a new task">
+            </div>
+            <div class="col-12 input-container">
+                <label for="date">Time</label>
+            </div>
+            <div class="col-12 input-container">
+                <input v-model="toDoTime" type="time" name="Time" id="time">
+            </div>
+            <button @click="addTodo" id="primary-button">Add</button>
+        </div>
+        <hr>
+        <ul>
+            <li v-for="(todo, index) in todos" :key="index">
+                <span :class="{ completed: todo.completed }">{{ todo.text }} </span>- <small><i>{{ todo.startTime }}</i></small>
+                <input type="checkbox" v-model="todo.completed">
+                <button @click="deleteTodo(index)" class="delete-button">Delete</button>
+            </li>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
